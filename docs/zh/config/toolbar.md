@@ -3,8 +3,8 @@
 ## 示例代码
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     toolbarKeys: ["undo", "redo", "brush", "eraser", 
         "|", "heading", "font-family", "font-size", 
         "|", "bold", "italic", "underline", "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", 
@@ -17,7 +17,7 @@ new AiEditor({
 })
 ```
 
-以上的配置为 AiEditor 工具类的默认配置，`"|"` 代表的是分割线，其他的含义如下：
+以上的配置为 JSTEditor 工具类的默认配置，`"|"` 代表的是分割线，其他的含义如下：
 
 - undo: 撤销
 - redo: 重做
@@ -59,11 +59,11 @@ new AiEditor({
 
 ## 自定义工具栏
 
-在 AiEditor 中，我们可以通过在 `toolbarKeys` 配置中进行自定义工具栏的扩展，配置示例代码如下：
+在 JSTEditor 中，我们可以通过在 `toolbarKeys` 配置中进行自定义工具栏的扩展，配置示例代码如下：
 
 ```typescript 7-12
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     toolbarKeys: ["undo", "redo", "brush", "eraser",
         "|", "heading", "font-family", "font-size",
         "|",
@@ -81,7 +81,7 @@ new AiEditor({
 ```
 自定义工具类配置项说明：
 
-- **icon**：用于菜单显示的 icon，暂时只支持 svg 配置，svg icon 建议使用 https://remixicon.com 提供的 icon，以保证和 AiEditor 的 icon 风格保持统一。
+- **icon**：用于菜单显示的 icon，暂时只支持 svg 配置，svg icon 建议使用 https://remixicon.com 提供的 icon，以保证和 JSTEditor 的 icon 风格保持统一。
 - **html**：自定义菜单的 html 内容，这个配置会覆盖 icon 配置，导致 icon 不生效， `icon` 和 `html` 只能配置其中一个。
 - **onClick**：鼠标点击菜单的事件监听。
 - **tip**：鼠标移动到菜单显示的文字提示，支持国际化配置。
@@ -89,8 +89,8 @@ new AiEditor({
 **tip国际化配置示例代码**
 
 ```ts 12,18,21
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     toolbarKeys: ["undo", "redo", "brush", "eraser",
         "|", "heading", "font-family", "font-size",
         "|",

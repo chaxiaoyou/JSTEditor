@@ -1,8 +1,8 @@
-import {AiEditorOptions, AiEditorEvent} from "../core/AiEditor.ts";
+import {JSTEditorOptions, JSTEditorEvent} from "../core/JSTEditor.ts";
 import {EditorEvents} from "@tiptap/core";
 
 
-export class Footer extends HTMLElement implements AiEditorEvent {
+export class Footer extends HTMLElement implements JSTEditorEvent {
 
     count: number = 0
 
@@ -58,7 +58,7 @@ export class Footer extends HTMLElement implements AiEditorEvent {
     updateCharacters() {
         this.innerHTML = `
         <div style="display: flex"> 
-            <span> Powered by AiEditor, Characters: ${this.count} </span>
+            <span> Powered by JSTEditor, Characters: ${this.count} </span>
             <div style="width: 20px;height: 20px;overflow: hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 16L6 10H18L12 16Z"></path></svg>
             </div>
@@ -66,7 +66,7 @@ export class Footer extends HTMLElement implements AiEditorEvent {
         `;
     }
 
-    onCreate(props: EditorEvents["create"], _: AiEditorOptions): void {
+    onCreate(props: EditorEvents["create"], _: JSTEditorOptions): void {
         this.count = props.editor.storage.characterCount.characters()
         this.updateCharacters()
     }

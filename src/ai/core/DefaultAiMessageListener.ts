@@ -1,7 +1,7 @@
 import {AiMessage} from "./AiMessage.ts";
 import {AiMessageListener} from "./AiMessageListener.ts";
 import {Editor} from "@tiptap/core";
-import {InnerEditor} from "../../core/AiEditor.ts";
+import {InnerEditor} from "../../core/JSTEditor.ts";
 import {getText} from "../../util/getText.ts";
 
 export interface AiMessageParserOptions {

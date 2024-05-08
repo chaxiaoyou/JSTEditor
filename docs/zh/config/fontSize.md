@@ -4,8 +4,8 @@
 ## 示例代码
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     fontSize:{
         values:[
             {name: "初号", value: 56},

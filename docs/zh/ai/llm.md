@@ -1,12 +1,12 @@
 # 大语言模型
 
-目前，AiEditor 支持 `星火大模型`、`文心一言`以及 `自定义后端` 类型的大语言模型。
+目前，JSTEditor 支持 `星火大模型`、`文心一言`以及 `自定义后端` 类型的大语言模型。
 
 ## 星火大模型
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai: {
         models: {
             spark: {
@@ -24,8 +24,8 @@ new AiEditor({
 ## 文心一言
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai: {
         models: {
             wenxin: {
@@ -42,8 +42,8 @@ new AiEditor({
 ## 自定义大语言模型
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai: {
         models: {
             custom: {

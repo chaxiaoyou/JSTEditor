@@ -1,7 +1,7 @@
 import {Plugin} from 'prosemirror-state'
 import {Extension} from "@tiptap/core";
 import {PluginKey} from "@tiptap/pm/state";
-import {InnerEditor} from "../core/AiEditor.ts";
+import {InnerEditor} from "../core/JSTEditor.ts";
 import {Slice} from '@tiptap/pm/model';
 
 export const PasteExt = Extension.create({

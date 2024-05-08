@@ -9,7 +9,7 @@ import {TextSelection} from "prosemirror-state";
 import {uuid} from "../util/uuid.ts";
 import {createMediaDecoration} from "../util/decorations.ts";
 import {getUploader} from "../util/getUploader.ts";
-import {UploaderEvent} from "../core/AiEditor.ts";
+import {UploaderEvent} from "../core/JSTEditor.ts";
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

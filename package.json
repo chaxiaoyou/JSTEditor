@@ -1,7 +1,7 @@
 {
-  "name": "aieditor",
-  "author": "yangfuhai",
-  "version": "1.0.0",
+  "name": "jsteditor",
+  "author": "hh",
+  "version": "1.0.1",
   "type": "module",
   "keywords": [
     "editor",
@@ -40,6 +40,7 @@
     "vite-plugin-dts": "^3.6.3"
   },
   "dependencies": {
+    "@fortaine/fetch-event-source": "^3.0.6",
     "@tiptap/core": "^2.2.4",
     "@tiptap/extension-bubble-menu": "^2.2.4",
     "@tiptap/extension-character-count": "^2.2.4",
@@ -67,6 +68,7 @@
     "@tiptap/starter-kit": "^2.2.4",
     "@tiptap/suggestion": "^2.2.4",
     "crypto-js": "^4.2.0",
+    "dayjs": "^1.11.11",
     "i18next": "^23.7.6",
     "lowlight": "^3.1.0",
     "markdown-it": "^13.0.2",
@@ -81,11 +83,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aieditor-team/aieditor"
+    "url": "https://github.com/jsteditor-team/jsteditor"
   },
   "bugs": {
-    "url": "https://github.com/aieditor-team/aieditor/issues"
+    "url": "https://github.com/jsteditor-team/jsteditor/issues"
   },
-  "homepage": "https://github.com/aieditor-team/aieditor#readme",
+  "homepage": "https://github.com/jsteditor-team/jsteditor#readme",
   "license": "LGPL"
 }

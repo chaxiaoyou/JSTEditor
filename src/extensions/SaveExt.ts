@@ -1,9 +1,9 @@
 import {Extension} from "@tiptap/core";
-import {AiEditor, InnerEditor} from "../core/AiEditor.ts";
+import {JSTEditor, InnerEditor} from "../core/JSTEditor.ts";
 
 
 export interface SaveExtOptions {
-    onSave?: (e: AiEditor) => boolean,
+    onSave?: (e: JSTEditor) => boolean,
 }
 
 export const SaveExt = Extension.create<SaveExtOptions>({
@@ -12,7 +12,7 @@ export const SaveExt = Extension.create<SaveExtOptions>({
         return {
             'Mod-s': ({editor}) => {
                 if (this.options.onSave) {
-                    return this.options.onSave((editor as InnerEditor).aiEditor)
+                    return this.options.onSave((editor as InnerEditor).JSTEditor)
                 }
                 return false;
             },

@@ -65,6 +65,7 @@ export class HttpStreamSocketClient implements AiClient {
     }
 
     protected onMessage(answer: string) {
+        console.log(answer)
         this.listener.onMessage(answer)
     }
 

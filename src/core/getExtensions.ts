@@ -29,7 +29,7 @@ import {IFrameExt} from "../extensions/IFrameExt.ts";
 import {getBubbleMenus} from "./getBubbleMenus.ts";
 import {Placeholder} from "@tiptap/extension-placeholder";
 import {createMention} from "../extensions/MentionExt.ts";
-import {AiEditor, AiEditorOptions} from "./AiEditor.ts";
+import {JSTEditor, JSTEditorOptions} from "./JSTEditor.ts";
 import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
 import {Markdown} from "tiptap-markdown";
@@ -37,7 +37,7 @@ import {ContainerExt} from "../extensions/ContainerExt.ts";
 import {HeadingExt} from "../extensions/HeadingExt.ts";
 import {SaveExt} from "../extensions/SaveExt.ts";
 
-export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
+export const getExtensions = (editor: JSTEditor, options: JSTEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
     const ret: Extensions = options.cbName && options.cbUrl ? [StarterKit.configure({
         history: false,

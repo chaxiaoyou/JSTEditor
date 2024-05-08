@@ -4,8 +4,8 @@
 ## 代码示例
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai:{
         models:{
             spark:{
@@ -44,17 +44,17 @@ version?: string,
 
 ## 服务端签名
 
-在使用 AiEditor 中，如果是用于内部用户，我们可以通过前端配置模型的 `appId`、`apiKey`、`apiSecret` ，这是没问题的。
+在使用 JSTEditor 中，如果是用于内部用户，我们可以通过前端配置模型的 `appId`、`apiKey`、`apiSecret` ，这是没问题的。
 
-但是，AiEditor 给普通互联网用户使用，则不应该把 `appId`、`apiKey`、`apiSecret` 配置在前端，而是通过后端服务对 Ai 请求路径进行签名，
+但是，JSTEditor 给普通互联网用户使用，则不应该把 `appId`、`apiKey`、`apiSecret` 配置在前端，而是通过后端服务对 Ai 请求路径进行签名，
 需要自定义配置 `onCreateClientUrl` 才能保证秘钥安全。
 
 
 示例代码如下：
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai:{
         models:{
             spark:{
@@ -83,8 +83,8 @@ new AiEditor({
 示例代码如下：
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai: {
         models: {
             spark: {

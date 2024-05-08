@@ -6,16 +6,16 @@
 安装：
 
 ```shell
-npm i aieditor
+npm i jsteditor
 ```
 
 使用：
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+    content: 'JSTEditor 是一个面向 AI 的开源富文本编辑器。 ',
     ai: {
         models: {
             spark: {

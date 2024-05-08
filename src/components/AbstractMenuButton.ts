@@ -1,13 +1,13 @@
-import {AiEditorOptions, AiEditorEvent} from "../core/AiEditor.ts";
+import {JSTEditorOptions, JSTEditorEvent} from "../core/JSTEditor.ts";
 import {Editor, EditorEvents} from "@tiptap/core";
 // @ts-ignore
 import {ChainedCommands} from "@tiptap/core/dist/packages/core/src/types";
 
-export class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
+export class AbstractMenuButton extends HTMLElement implements JSTEditorEvent {
 
     template: string = '';
     editor?: Editor;
-    options?: AiEditorOptions;
+    options?: JSTEditorOptions;
 
     protected constructor() {
         super();
@@ -30,7 +30,7 @@ export class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
         //do nothing
     }
 
-    onCreate(props: EditorEvents["create"], options: AiEditorOptions): void {
+    onCreate(props: EditorEvents["create"], options: JSTEditorOptions): void {
         this.editor = props.editor;
         this.options = options;
     }

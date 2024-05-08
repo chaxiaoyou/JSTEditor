@@ -6,15 +6,15 @@ import { Extensions } from '@tiptap/core';
 import { Fragment } from 'prosemirror-model';
 import { JSONContent } from '@tiptap/core';
 
-declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
+declare class AbstractMenuButton extends HTMLElement implements JSTEditorEvent {
     template: string;
     editor?: Editor;
-    options?: AiEditorOptions;
+    options?: JSTEditorOptions;
     protected constructor();
     protected registerClickListener(): void;
     connectedCallback(): void;
     onClick(commands: ChainedCommands): void;
-    onCreate(props: EditorEvents["create"], options: AiEditorOptions): void;
+    onCreate(props: EditorEvents["create"], options: JSTEditorOptions): void;
     onTransaction(event: EditorEvents["transaction"]): void;
     onActive(editor: Editor): boolean;
 }
@@ -23,107 +23,6 @@ declare interface AiClient {
     start: (message: string) => void;
     stop: () => void;
 }
-
-export declare class AiEditor {
-    private customLayout;
-    innerEditor: InnerEditor;
-    container: HTMLDivElement;
-    header: Header;
-    mainEl: HTMLDivElement;
-    footer: Footer;
-    options: AiEditorOptions;
-    eventComponents: AiEditorEvent[];
-    constructor(_: AiEditorOptions);
-    private initI18nAndInnerEditor;
-    private initInnerEditor;
-    private onCreate;
-    private onTransaction;
-    private onDestroy;
-    getHtml(): string;
-    getJson(): JSONContent;
-    getText(): string;
-    getSelectedText(): string;
-    getMarkdown(): any;
-    getOptions(): AiEditorOptions;
-    getOutline(): any[];
-    focus(): this;
-    focusPos(pos: number): this;
-    focusStart(): this;
-    focusEnd(): this;
-    isFocused(): boolean;
-    blur(): this;
-    insert(content: any): this;
-    setEditable(editable: boolean): this;
-    setContent(content: string): this;
-    clear(): this;
-    isEmpty(): boolean;
-    changeLang(lang: string): this;
-    removeRetention(): this;
-    destroy(): void;
-    isDestroyed(): boolean;
-}
-
-export declare interface AiEditorEvent {
-    onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void;
-    onTransaction: (props: EditorEvents['transaction']) => void;
-}
-
-export declare type AiEditorOptions = {
-    element: string | Element;
-    content?: string;
-    contentRetention?: boolean;
-    contentRetentionKey?: string;
-    lang?: string;
-    editable?: boolean;
-    i18n?: Record<string, Record<string, string>>;
-    placeholder?: string;
-    theme?: "light" | "dark";
-    cbName?: string;
-    cbUrl?: string;
-    onMentionQuery?: (query: string) => any[] | Promise<any[]>;
-    onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions;
-    onDestroy?: (editor: AiEditor) => void;
-    onCreated?: (editor: AiEditor) => void;
-    onChange?: (editor: AiEditor) => void;
-    onSave?: (editor: AiEditor) => boolean;
-    toolbarKeys?: (string | CustomMenu)[];
-    link?: {
-        autolink?: boolean;
-        rel?: string;
-        class?: string;
-    };
-    uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
-    image?: {
-        customMenuInvoke?: (editor: AiEditor) => void;
-        uploadUrl?: string;
-        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
-        uploaderEvent?: UploaderEvent;
-        defaultSize?: number;
-        allowBase64: boolean;
-    };
-    video?: {
-        customMenuInvoke?: (editor: AiEditor) => void;
-        uploadUrl?: string;
-        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
-        uploaderEvent?: UploaderEvent;
-    };
-    attachment?: {
-        customMenuInvoke?: (editor: AiEditor) => void;
-        uploadUrl?: string;
-        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
-        uploaderEvent?: UploaderEvent;
-    };
-    fontFamily?: {
-        values: NameAndValue[];
-    };
-    fontSize?: {
-        values: NameAndValue[];
-    };
-    ai?: AiGlobalConfig;
-};
 
 declare interface AiGlobalConfig {
     models: Record<string, AiModelConfig>;
@@ -210,33 +109,137 @@ export declare interface CustomMenu {
     icon?: string;
     html?: string;
     tip?: string;
-    onClick?: (event: MouseEvent, editor: AiEditor) => void;
-    onCreate?: (button: HTMLElement, editor: AiEditor) => void;
+    onClick?: (event: MouseEvent, editor: JSTEditor) => void;
+    onCreate?: (button: HTMLElement, editor: JSTEditor) => void;
 }
 
-declare class Footer extends HTMLElement implements AiEditorEvent {
+declare class Footer extends HTMLElement implements JSTEditorEvent {
     count: number;
     constructor();
     updateCharacters(): void;
-    onCreate(props: EditorEvents["create"], _: AiEditorOptions): void;
+    onCreate(props: EditorEvents["create"], _: JSTEditorOptions): void;
     onTransaction(props: EditorEvents["transaction"]): void;
 }
 
-declare class Header extends HTMLElement implements AiEditorEvent {
+declare class Header extends HTMLElement implements JSTEditorEvent {
     menuButtons: AbstractMenuButton[];
     constructor();
     connectedCallback(): void;
-    onCreate(event: EditorEvents["create"], options: AiEditorOptions): void;
+    onCreate(event: EditorEvents["create"], options: JSTEditorOptions): void;
     onTransaction(event: EditorEvents["transaction"]): void;
 }
 
 export declare class InnerEditor extends Editor {
-    aiEditor: AiEditor;
-    userOptions: AiEditorOptions;
-    constructor(aiEditor: AiEditor, editorOptions: AiEditorOptions, options?: Partial<EditorOptions>);
+    JSTEditor: JSTEditor;
+    userOptions: JSTEditorOptions;
+    constructor(JSTEditor: JSTEditor, editorOptions: JSTEditorOptions, options?: Partial<EditorOptions>);
     parseHtml(html: string): Fragment;
     parseMarkdown(markdown: string): Fragment;
 }
+
+export declare class JSTEditor {
+    private customLayout;
+    innerEditor: InnerEditor;
+    container: HTMLDivElement;
+    header: Header;
+    mainEl: HTMLDivElement;
+    footer: Footer;
+    options: JSTEditorOptions;
+    eventComponents: JSTEditorEvent[];
+    constructor(_: JSTEditorOptions);
+    private initI18nAndInnerEditor;
+    private initInnerEditor;
+    private onCreate;
+    private onTransaction;
+    private onDestroy;
+    getHtml(): string;
+    getJson(): JSONContent;
+    getText(): string;
+    getSelectedText(): string;
+    getMarkdown(): any;
+    getOptions(): JSTEditorOptions;
+    getOutline(): any[];
+    focus(): this;
+    focusPos(pos: number): this;
+    focusStart(): this;
+    focusEnd(): this;
+    isFocused(): boolean;
+    blur(): this;
+    insert(content: any): this;
+    setEditable(editable: boolean): this;
+    setContent(content: string): this;
+    clear(): this;
+    isEmpty(): boolean;
+    changeLang(lang: string): this;
+    removeRetention(): this;
+    destroy(): void;
+    isDestroyed(): boolean;
+}
+
+export declare interface JSTEditorEvent {
+    onCreate: (props: EditorEvents['create'], options: JSTEditorOptions) => void;
+    onTransaction: (props: EditorEvents['transaction']) => void;
+}
+
+export declare type JSTEditorOptions = {
+    element: string | Element;
+    content?: string;
+    contentRetention?: boolean;
+    contentRetentionKey?: string;
+    lang?: string;
+    editable?: boolean;
+    i18n?: Record<string, Record<string, string>>;
+    placeholder?: string;
+    theme?: "light" | "dark";
+    cbName?: string;
+    cbUrl?: string;
+    onMentionQuery?: (query: string) => any[] | Promise<any[]>;
+    onCreateBefore?: (editor: JSTEditor, extensions: Extensions) => void | Extensions;
+    onDestroy?: (editor: JSTEditor) => void;
+    onCreated?: (editor: JSTEditor) => void;
+    onChange?: (editor: JSTEditor) => void;
+    onSave?: (editor: JSTEditor) => boolean;
+    toolbarKeys?: (string | CustomMenu)[];
+    link?: {
+        autolink?: boolean;
+        rel?: string;
+        class?: string;
+    };
+    uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+    image?: {
+        customMenuInvoke?: (editor: JSTEditor) => void;
+        uploadUrl?: string;
+        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
+        uploadFormName?: string;
+        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        uploaderEvent?: UploaderEvent;
+        defaultSize?: number;
+        allowBase64?: boolean;
+    };
+    video?: {
+        customMenuInvoke?: (editor: JSTEditor) => void;
+        uploadUrl?: string;
+        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
+        uploadFormName?: string;
+        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        uploaderEvent?: UploaderEvent;
+    };
+    attachment?: {
+        customMenuInvoke?: (editor: JSTEditor) => void;
+        uploadUrl?: string;
+        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
+        uploadFormName?: string;
+        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        uploaderEvent?: UploaderEvent;
+    };
+    fontFamily?: {
+        values: NameAndValue[];
+    };
+    fontSize?: {
+        values: NameAndValue[];
+    };
+    ai?: AiGlobalConfig;
+};
 
 export declare interface NameAndValue {
     name: string;
@@ -252,10 +255,10 @@ export declare class SparkAiModel extends AiModel {
 }
 
 export declare interface UploaderEvent {
-    onUploadBefore: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean;
-    onSuccess: (file: File, response: any) => any;
-    onFailed: (file: File, response: any) => void;
-    onError: (file: File, err: any) => void;
+    onUploadBefore?: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean;
+    onSuccess?: (file: File, response: any) => any;
+    onFailed?: (file: File, response: any) => void;
+    onError?: (file: File, err: any) => void;
 }
 
 export { }

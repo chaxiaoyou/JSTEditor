@@ -9,8 +9,8 @@
 以上功能需要进行对 AI 的进行配置， 配置代码如下：
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai:{
         codeBlock: {
             codeComments: {

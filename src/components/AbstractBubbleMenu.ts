@@ -1,4 +1,4 @@
-import {AiEditorOptions, AiEditorEvent} from "../core/AiEditor.ts";
+import {JSTEditorOptions, JSTEditorEvent} from "../core/JSTEditor.ts";
 import {Editor, EditorEvents} from "@tiptap/core";
 import tippy from "tippy.js";
 
@@ -8,7 +8,7 @@ export type BubbleMenuItem = {
     content: string,
 }
 
-export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditorEvent {
+export abstract class AbstractBubbleMenu extends HTMLElement implements JSTEditorEvent {
 
     editor?: Editor;
     items: BubbleMenuItem[] = [];
@@ -56,7 +56,7 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
         });
     }
 
-    onCreate(props: EditorEvents['create'], _: AiEditorOptions) {
+    onCreate(props: EditorEvents['create'], _: JSTEditorOptions) {
         this.editor = props.editor
     }
 

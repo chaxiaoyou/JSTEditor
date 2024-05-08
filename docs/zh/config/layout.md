@@ -1,9 +1,9 @@
 # 自定义布局
 
-默认情况下，AiEditor 在初始化的时候，会创建编辑器的头部菜单、编辑区域以及底部的字数显示区域。
+默认情况下，JSTEditor 在初始化的时候，会创建编辑器的头部菜单、编辑区域以及底部的字数显示区域。
 如下图所示：
 
-![](../../assets/image/aieditor-areas.png)
+![](../../assets/image/jsteditor-areas.png)
 
 ## 默认示例
 
@@ -13,22 +13,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>AiEditor Demo</title>
+    <title>JSTEditor Demo</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link type="text/css" rel="stylesheet" href="aieditor/style.css">
+    <link type="text/css" rel="stylesheet" href="jsteditor/style.css">
     <script type="module">
-        import {AiEditor} from 'aieditor/index.js'
-        new AiEditor({
-            element: "#aiEditor",
+        import {JSTEditor} from 'jsteditor/index.js'
+        new JSTEditor({
+            element: "#JSTEditor",
             placeholder: "点击输入内容...",
-            content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。',
+            content: 'JSTEditor 是一个面向 AI 的下一代富文本编辑器。',
         })
     </script>
 </head>
 <body>
 
-<div id="aiEditor" style="height: 550px;  margin: 20px"></div>
+<div id="JSTEditor" style="height: 550px;  margin: 20px"></div>
 
 </body>
 </html>
@@ -36,8 +36,8 @@
 
 ## 自定义布局
 
-在某些场景下，我们想自定义整个 UI 布局，比如：类腾讯文档风格（演示地址： http://aieditor1.jpress.cn ），又或者其他自定义布局形式。
-我们可以通过 AiEditor 自定义的 UI 来实现。
+在某些场景下，我们想自定义整个 UI 布局，比如：类腾讯文档风格（演示地址： http://jsteditor1.jpress.cn ），又或者其他自定义布局形式。
+我们可以通过 JSTEditor 自定义的 UI 来实现。
 
 
 
@@ -47,22 +47,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>AiEditor Demo</title>
+    <title>JSTEditor Demo</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link type="text/css" rel="stylesheet" href="aieditor/style.css">
+    <link type="text/css" rel="stylesheet" href="jsteditor/style.css">
     <script type="module">
-        import {AiEditor} from 'aieditor/index.js'
-        new AiEditor({
-            element: "#aiEditor",
+        import {JSTEditor} from 'jsteditor/index.js'
+        new JSTEditor({
+            element: "#JSTEditor",
             placeholder: "点击输入内容...",
-            content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。',
+            content: 'JSTEditor 是一个面向 AI 的下一代富文本编辑器。',
         })
     </script>
 </head>
 <body>
 
-<div id="aiEditor" style="height: 550px;  margin: 20px">
+<div id="JSTEditor" style="height: 550px;  margin: 20px">
     <div class="aie-container">
         <div class="aie-container-header"></div>
         <div class="aie-container-main"></div>

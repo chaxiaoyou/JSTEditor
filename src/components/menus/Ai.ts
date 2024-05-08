@@ -1,6 +1,6 @@
 import {AbstractDropdownMenuButton} from "../AbstractDropdownMenuButton.ts";
 import {Editor, EditorEvents} from "@tiptap/core";
-import {AiEditorOptions} from "../../core/AiEditor.ts";
+import {JSTEditorOptions} from "../../core/JSTEditor.ts";
 import {AiModelManager} from "../../ai/AiModelManager.ts";
 import {AiMenu} from "../../ai/AiGlobalConfig.ts";
 import {DefaultAiMessageListener} from "../../ai/core/DefaultAiMessageListener.ts";
@@ -47,7 +47,7 @@ export class Ai extends AbstractDropdownMenuButton<AiMenu> {
         this.menuTextWidth = "20px"
     }
 
-    onCreate(_: EditorEvents["create"], options: AiEditorOptions) {
+    onCreate(_: EditorEvents["create"], options: JSTEditorOptions) {
         super.onCreate(_, options);
         this.menuData = options.ai?.menus || aiMenus;
     }

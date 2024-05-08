@@ -5,7 +5,7 @@ import {Footer} from "../components/Footer.ts";
 
 import {getExtensions} from "./getExtensions.ts";
 
-import "../styles"
+import "../styles/index.ts"
 import i18next from "i18next";
 import {zh} from "../i18n/zh.ts";
 import {en} from "../i18n/en.ts";
@@ -25,8 +25,8 @@ export interface NameAndValue {
     value: any;
 }
 
-export interface AiEditorEvent {
-    onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void
+export interface JSTEditorEvent {
+    onCreate: (props: EditorEvents['create'], options: JSTEditorOptions) => void
     onTransaction: (props: EditorEvents['transaction']) => void
 }
 
@@ -43,12 +43,12 @@ export interface CustomMenu {
     icon?: string
     html?: string
     tip?: string
-    onClick?: (event: MouseEvent, editor: AiEditor) => void
-    onCreate?: (button: HTMLElement, editor: AiEditor) => void
+    onClick?: (event: MouseEvent, editor: JSTEditor) => void
+    onCreate?: (button: HTMLElement, editor: JSTEditor) => void
 }
 
 
-export type AiEditorOptions = {
+export type JSTEditorOptions = {
     element: string | Element,
     content?: string,
     contentRetention?: boolean,
@@ -61,11 +61,11 @@ export type AiEditorOptions = {
     cbName?: string,
     cbUrl?: string
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
-    onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions,
-    onDestroy?: (editor: AiEditor) => void,
-    onCreated?: (editor: AiEditor) => void,
-    onChange?: (editor: AiEditor) => void,
-    onSave?: (editor: AiEditor) => boolean,
+    onCreateBefore?: (editor: JSTEditor, extensions: Extensions) => void | Extensions,
+    onDestroy?: (editor: JSTEditor) => void,
+    onCreated?: (editor: JSTEditor) => void,
+    onChange?: (editor: JSTEditor) => void,
+    onSave?: (editor: JSTEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
     link?: {
         autolink?: boolean,
@@ -74,7 +74,7 @@ export type AiEditorOptions = {
     },
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     image?: {
-        customMenuInvoke?: (editor: AiEditor) => void;
+        customMenuInvoke?: (editor: JSTEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
         uploadFormName?: string,
@@ -84,7 +84,7 @@ export type AiEditorOptions = {
         allowBase64?: boolean,
     },
     video?: {
-        customMenuInvoke?: (editor: AiEditor) => void;
+        customMenuInvoke?: (editor: JSTEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
         uploadFormName?: string,
@@ -92,7 +92,7 @@ export type AiEditorOptions = {
         uploaderEvent?: UploaderEvent,
     },
     attachment?: {
-        customMenuInvoke?: (editor: AiEditor) => void;
+        customMenuInvoke?: (editor: JSTEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
         uploadFormName?: string,
@@ -108,7 +108,7 @@ export type AiEditorOptions = {
     ai?: AiGlobalConfig,
 }
 
-const defaultOptions: Partial<AiEditorOptions> = {
+const defaultOptions: Partial<JSTEditorOptions> = {
     theme: "light",
     lang: "zh",
     contentRetentionKey: "ai-editor-content",
@@ -118,12 +118,12 @@ const defaultOptions: Partial<AiEditorOptions> = {
 
 export class InnerEditor extends Tiptap {
 
-    aiEditor: AiEditor;
-    userOptions: AiEditorOptions;
+    JSTEditor: JSTEditor;
+    userOptions: JSTEditorOptions;
 
-    constructor(aiEditor: AiEditor, editorOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
+    constructor(JSTEditor: JSTEditor, editorOptions: JSTEditorOptions, options: Partial<EditorOptions> = {}) {
         super(options);
-        this.aiEditor = aiEditor;
+        this.JSTEditor = JSTEditor;
         this.userOptions = editorOptions;
     }
 
@@ -144,7 +144,7 @@ export class InnerEditor extends Tiptap {
     }
 }
 
-export class AiEditor {
+export class JSTEditor {
 
     private customLayout: boolean = false;
 
@@ -158,11 +158,11 @@ export class AiEditor {
 
     footer!: Footer;
 
-    options: AiEditorOptions;
+    options: JSTEditorOptions;
 
-    eventComponents: AiEditorEvent[] = [];
+    eventComponents: JSTEditorEvent[] = [];
 
-    constructor(_: AiEditorOptions) {
+    constructor(_: JSTEditorOptions) {
         this.options = {...defaultOptions, ..._};
         this.initI18nAndInnerEditor();
     }

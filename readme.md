@@ -3,19 +3,19 @@
 
 ![banner.png](docs%2Fassets%2Fimage%2Flogo-banner.png)
 
-# AiEditor
+# JSTEditor
 
-About AiEditor (official website https://aieditor.dev)
+About JSTEditor (official website https://jsteditor.dev)
 
-> AiEditor is a next-generation rich text editor for AI. 
+> JSTEditor is a next-generation rich text editor for AI. 
 > It is based on Web Component and therefore supports almost any front-end framework 
 > such as Vue, React, Angular and Svelte. It is adapted to PC Web and mobile, and provides two themes: light and dark. 
 > In addition, it also provides flexible configuration, developers can easily use it to develop any text editing application.
 
 ## Online demo
 
-- Modern style: http://aieditor1.jpress.cn
-- Classic Style: http://aieditor.jpress.cn
+- Modern style: http://jsteditor1.jpress.cn
+- Classic Style: http://jsteditor.jpress.cn
 
 
 
@@ -50,7 +50,7 @@ About AiEditor (official website https://aieditor.dev)
 
 ## Quick start
 
-Visit: https://aieditor.dev/zh/getting-started.html
+Visit: https://jsteditor.dev/zh/getting-started.html
 
 ## Communication
 

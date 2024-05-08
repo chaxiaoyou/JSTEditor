@@ -7,23 +7,23 @@
 方案 1： 在初始化时，通过传入 ` editable:false` 参数进行设置：
 
 ```typescript 5
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+    content: 'JSTEditor 是一个面向 AI 的开源富文本编辑器。 ',
     editable:false,
 })
 ```
 
-方案 2： 通过调用 `aiEditor.setEditable(false)` 进行设置：
+方案 2： 通过调用 `JSTEditor.setEditable(false)` 进行设置：
 
 ```typescript 8
-const aiEditor = new AiEditor({
-    element: "#aiEditor",
+const JSTEditor = new JSTEditor({
+    element: "#JSTEditor",
     placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+    content: 'JSTEditor 是一个面向 AI 的开源富文本编辑器。 ',
 })
 
 
-aiEditor.setEditable(false)
+JSTEditor.setEditable(false)
 ```

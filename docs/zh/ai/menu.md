@@ -5,8 +5,8 @@ AI 菜单配置，用于在编辑器顶部工具类，点击 AI 下拉的菜单�
 ## 示例代码
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     ai:{
         models:{
             spark:{
@@ -35,7 +35,7 @@ new AiEditor({
 })
 ```
 
-- **icon**：用于菜单显示的 icon，暂时只支持 svg 配置，svg icon 建议使用 https://remixicon.com 提供的 icon，以保证和 AiEditor 的 icon 风格保持统一。
+- **icon**：用于菜单显示的 icon，暂时只支持 svg 配置，svg icon 建议使用 https://remixicon.com 提供的 icon，以保证和 JSTEditor 的 icon 风格保持统一。
 - **name**：AI 菜单的名称
 - **prompt**：AI 提示语
 - **text**：文字内容，支持 `"focusBefore"` 和 `"selected"` 可选；`"focusBefore"` 表示获取当前焦点前的文字内容，`"selected"` 表示获取当前选中的文本内容。

@@ -5,14 +5,14 @@ import Suggestion, {SuggestionOptions, SuggestionProps} from '@tiptap/suggestion
 
 import tippy, {Instance} from "tippy.js";
 import {AiModelManager} from "../ai/AiModelManager.ts";
-import {AiEditorOptions} from "../core/AiEditor.ts";
+import {JSTEditorOptions} from "../core/JSTEditor.ts";
 import {DefaultAiMessageListener} from "../ai/core/DefaultAiMessageListener.ts";
 import {AiMenu} from "../ai/AiGlobalConfig.ts";
 
 export type AiCommandOptions = {
     HTMLAttributes?: Record<string, any>
     suggestion: Omit<SuggestionOptions, 'editor'>
-    editorOptions: AiEditorOptions
+    editorOptions: JSTEditorOptions
 }
 
 export const defaultCommands = [

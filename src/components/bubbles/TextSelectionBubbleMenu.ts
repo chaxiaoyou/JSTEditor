@@ -3,7 +3,7 @@ import {EditorEvents, isNodeSelection, posToDOMRect} from "@tiptap/core";
 import {t} from "i18next";
 import tippy, {Instance} from "tippy.js";
 import {AiModelManager} from "../../ai/AiModelManager.ts";
-import {AiEditorOptions, InnerEditor} from "../../core/AiEditor.ts";
+import {JSTEditorOptions, InnerEditor} from "../../core/JSTEditor.ts";
 import {Svgs} from "../../commons/Svgs.ts";
 import {AiClient} from "../../ai/core/AiClient.ts";
 
@@ -93,7 +93,7 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         }
     }
 
-    onCreate(props: EditorEvents["create"], _: AiEditorOptions) {
+    onCreate(props: EditorEvents["create"], _: JSTEditorOptions) {
         super.onCreate(props, _);
         const options = (this.editor as InnerEditor).userOptions;
         if (options.ai && options.ai.bubblePanelEnable === false) {
@@ -244,6 +244,7 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
             const selectedText = doc.textBetween(selection.from, selection.to);
             const options = (this.editor as InnerEditor).userOptions;
             const aiModel = AiModelManager.get(options.ai?.bubblePanelModel!);
+            console.log(aiModel);
             if (aiModel) {
                 const menu = this;
                 aiModel.chat(selectedText, prompt, {

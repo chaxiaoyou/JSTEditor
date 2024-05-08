@@ -3,7 +3,7 @@ layout: home
 ---
 
 <script setup>
-  import AiEditor from '../components/AiEditor.vue'
+  import JSTEditor from '../components/JSTEditor.vue'
 </script>
 
-<AiEditor />
+<JSTEditor />

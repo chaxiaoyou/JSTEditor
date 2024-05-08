@@ -1,4 +1,4 @@
-import {AiEditorOptions, AiEditorEvent, CustomMenu, InnerEditor} from "../core/AiEditor.ts";
+import {JSTEditorOptions, JSTEditorEvent, CustomMenu, InnerEditor} from "../core/JSTEditor.ts";
 import {EditorEvents} from "@tiptap/core";
 import {Undo} from "./menus/Undo";
 import {AbstractMenuButton} from "./AbstractMenuButton.ts";
@@ -98,7 +98,7 @@ const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "heading", "
 ];
 
 
-export class Header extends HTMLElement implements AiEditorEvent {
+export class Header extends HTMLElement implements JSTEditorEvent {
     // template:string;
     menuButtons: AbstractMenuButton[] = [];
 
@@ -116,7 +116,7 @@ export class Header extends HTMLElement implements AiEditorEvent {
         this.appendChild(divElement)
     }
 
-    onCreate(event: EditorEvents["create"], options: AiEditorOptions): void {
+    onCreate(event: EditorEvents["create"], options: JSTEditorOptions): void {
         let toolbarKeys = options.toolbarKeys || defaultMenus;
 
         for (let toolbarKey of toolbarKeys) {
@@ -170,7 +170,7 @@ export class Header extends HTMLElement implements AiEditorEvent {
                     }
 
                     if (customMenuConfig.onCreate) {
-                        customMenuConfig.onCreate(menuButton, (event.editor as InnerEditor).aiEditor);
+                        customMenuConfig.onCreate(menuButton, (event.editor as InnerEditor).JSTEditor);
                     }
 
                     this.menuButtons.push(menuButton);

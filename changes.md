@@ -1,4 +1,4 @@
-# AiEditor ChangeLog
+# JSTEditor ChangeLog
 
 
 ## v1.0.0 20240329:
@@ -35,7 +35,7 @@
 ## v1.0.0-rc.7 20240109:
 - 新增：添加当 uploader 的 onUploadBefore 返回 false 时，中断文件上传
 - 新增：Ai 模块添加自定义 AiModelFactory 的配置，方便引用第三方 Ai 大模型
-- 优化：修改  AiEditor.insert 的参数为 any 类型
+- 优化：修改  JSTEditor.insert 的参数为 any 类型
 - 优化：重命名 AiModelFactory 为 AiModelManager
 - 修复：修改全屏按钮在某些情况下不起作用的问题，感谢 @ashuicoder
 - 修复：高亮块、链接、引用获得焦点时，菜单没有被激活的问题
@@ -66,7 +66,7 @@
 
 
 ## v1.0.0-rc.4 20231222:
-- 修复：当 AiEditor 嵌入到 Form 时，点击某些按钮会触发 Form 提交的问题
+- 修复：当 JSTEditor 嵌入到 Form 时，点击某些按钮会触发 Form 提交的问题
 - 修复：从网页复制的内容粘贴到编辑器，图片无法被粘贴进来的问题
 - 修复：点击表格、图片时，会有多个弹出菜单位置冲突的问题
 
@@ -74,9 +74,9 @@
 
 ## v1.0.0-rc.2 20231220:
 - 新增：自定义菜单添加 id 和 className 类名配置的支持
-- 新增：AiEditor 添加 onDestroy 监听的配置支持
+- 新增：JSTEditor 添加 onDestroy 监听的配置支持
 - 优化：上传组件重命名 onBeforeUpload 为 onUploadBefore
-- 修复：在 React 的 StrictMode 下，无法使用 AiEditor 自定义布局的问题
+- 修复：在 React 的 StrictMode 下，无法使用 JSTEditor 自定义布局的问题
 - 文档：添加自定义布局的相关文档内容
 
 
@@ -84,7 +84,7 @@
 ## v1.0.0-rc.1 20231219:
 - 新增：AI 功能添加选择文字时，对文字进行在定义 Prompt 操作的功能
 - 新增：添加选中文字内容时，弹出操作菜单的功能
-- 新增：AiEditor 添加 onCreateBefore 的钩子函数，方便初始化插件
+- 新增：JSTEditor 添加 onCreateBefore 的钩子函数，方便初始化插件
 - 修复：同一个页面下，初始化多个 editor 实例时出错的问题
 - 修复：修复保持 html 后，通过 html 再次初始化编辑器无法准确解析视频组件的问题
 - 优化：重构 AbstractBubbleMenu.ts 的相关属性和逻辑
@@ -107,8 +107,8 @@
 - 新增：“链接” 功能添加自定义 ref、class 等配置的支持
 - 新增：添加头部、编辑区的自定义布局支持
 - 新增：添加 “类腾讯文档” 风格的 demo 示例代码
-- 新增：AiEditor 添加 "onCreated" 方法用于监听初始化
-- 优化：优化 aiEditor 和其他应用使用，在打印内容时可能出现内容错乱的问题
+- 新增：JSTEditor 添加 "onCreated" 方法用于监听初始化
+- 优化：优化 JSTEditor 和其他应用使用，在打印内容时可能出现内容错乱的问题
 - 优化：重命名 menus 为 header，和 footer 统一命名
 - 样式：优化 “表格” 在暗色模式下显示不正确的问题
 - 文档：更新关于 uploaderEvent 的相关文档
@@ -119,7 +119,7 @@
 ## v1.0.0-beta.8 20231207:
 - 新增：`代码块` 新增 AI 自动添加注释的功能
 - 新增：`代码块` 新增 AI 解释代码含义的功能
-- 新增：AiEditor 添加 `getSelectedText()` 用于获取选择的文字
+- 新增：JSTEditor 添加 `getSelectedText()` 用于获取选择的文字
 - 新增：图片、视频、附件上传添加 `dataProcessor` 配置用于二次处理服务器请求的功能
 - 修复：`代码块` 在第一次初始化时，无法选择代码语言的问题
 - 样式：修改 `引用`（`blockquote`）在暗色模式下的样式问题
@@ -128,29 +128,29 @@
 
 
 ## v1.0.0-beta.7 20231204:
-- 新增：AiEditor 添加 getMarkdown() 方法，用于获得 markdown 内容
-- 新增：AiEditor 添加 getOutline() 方法，用于获得文章的目录内容
-- 新增：AiEditor.focusPos(pos) 方法用于定位当前焦点到指定位置
+- 新增：JSTEditor 添加 getMarkdown() 方法，用于获得 markdown 内容
+- 新增：JSTEditor 添加 getOutline() 方法，用于获得文章的目录内容
+- 新增：JSTEditor.focusPos(pos) 方法用于定位当前焦点到指定位置
 - 新增：添加 "高亮块" 功能，类型 vuepress 的 `:::`
 - 修复：修改附件上传时，未配置上传 url 的情况下出现错误的问题
 - 修复：字号大小设置菜单无法设置到默认字号的问题
 - 修复：自定义 AI 菜单时，添加 4 个以上菜单会出现滚动条的问题
-- 优化：AiEditor 类合并 insertHtml 和 insertMarkdown 为 insert 方法
+- 优化：JSTEditor 类合并 insertHtml 和 insertMarkdown 为 insert 方法
 - 优化：优化编辑区的链接、图片、表格的浮动菜单有警告输出的问题
 - 优化：重命名工具类的 Title 为 Heading
 - 样式：优化链接弹出编辑框网址输入栏不对齐的问题
 - 样式：弹出框等元素添加 3px 圆角，使之在 UI 效果上更精致
 - 样式：修改内容编辑区的表格有一个横向滚动条的问题
 - 样式：优化菜单中插入表格的鼠标移动样式
-- 文档：更细 AiEditor 的 API 方法列表
+- 文档：更细 JSTEditor 的 API 方法列表
 - 文档：readme 添加英文版本的内容
 
 
 
 ## v1.0.0-beta.6 20231201:
 - 新增：增强对 AI 输出自动进行 markdown 转换的功能
-- 新增：AiEditor 的相关操作方法支持链式调用的功能
-- 新增：添加 "aiEditor.insertMarkdown()" 用于插入 markdown 内容
+- 新增：JSTEditor 的相关操作方法支持链式调用的功能
+- 新增：添加 "JSTEditor.insertMarkdown()" 用于插入 markdown 内容
 - 新增：支持直接粘贴 markdown 内容自动转换为可视化编辑的功能
 - 新增：增强在输入时更多的 markdown 功能转换
 - 优化：重命名 "arEditor.insert()" 方法为 "insertHtml()"
@@ -160,11 +160,11 @@
 
 
 ## v1.0.0-beta.5 20231129:
-- 新增：为 aieditor 添加全新的 logo
+- 新增：为 jsteditor 添加全新的 logo
 - 新增：添加 1i8n 国际化支持
-- 新增：添加 vue 和 aieditor 整合的示例代码和文档
-- 新增：添加 react 和 aieditor 整合的示例代码和文档
-- 新增：AiEditor 类添加 `insert(html)`、`clear()`、`focus()`、`destroy()` 等更多方法
+- 新增：添加 vue 和 jsteditor 整合的示例代码和文档
+- 新增：添加 react 和 jsteditor 整合的示例代码和文档
+- 新增：JSTEditor 类添加 `insert(html)`、`clear()`、`focus()`、`destroy()` 等更多方法
 - 优化：修改菜单中选择的默认样式和图标
 - 优化：移除代码中一些无用的 log 输出
 - 修复：修复工具栏中下拉菜单无法联动默认样式的问题
@@ -174,7 +174,7 @@
 
 
 ## v1.0.0-beta.3 20231127:
-- 新增：完善文档站点 https://aieditor.dev 并上线
+- 新增：完善文档站点 https://jsteditor.dev 并上线
 - 新增：添加内容编辑自动保存到 localStorage 功能及其相关 API
 - 新增：字体颜色、背景颜色等的最近颜色现在添加自动保存到 localStorage 功能
 - 新增：插入表格添加鼠标移动显示行和列的功能
@@ -187,7 +187,7 @@
 
 ## v1.0.0-beta.2 20231120:
 - 新增：添加输入 "/" 时弹出 AI 菜单的功能
-- 新增：AiEditor 添加 onChange 的回调配置
+- 新增：JSTEditor 添加 onChange 的回调配置
 - 新增：星火大模型添加 ws 和 wss 协议配置的支持
 - 新增：星火大模型添加自定义 URL 数据签名的支持
 - 新增：编辑器右下角添加自由拖拽放大或缩小整个编辑器的支持

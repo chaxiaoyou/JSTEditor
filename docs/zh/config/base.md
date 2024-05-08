@@ -3,11 +3,11 @@
 ## 示例代码
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     placeholder: "点击输入内容...",
     theme: "light",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+    content: 'JSTEditor 是一个面向 AI 的开源富文本编辑器。 ',
     contentRetention: true,
     ai: {
         models: {

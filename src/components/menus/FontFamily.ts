@@ -1,6 +1,6 @@
 import {AbstractDropdownMenuButton} from "../AbstractDropdownMenuButton.ts";
 import {Editor, EditorEvents} from "@tiptap/core";
-import {AiEditorOptions, NameAndValue} from "../../core/AiEditor.ts";
+import {JSTEditorOptions, NameAndValue} from "../../core/JSTEditor.ts";
 import {t} from "i18next";
 
 
@@ -22,7 +22,7 @@ export class FontFamily extends AbstractDropdownMenuButton<NameAndValue> {
         this.dropDivWith = "150px"
     }
 
-    onCreate(_: EditorEvents["create"], options: AiEditorOptions) {
+    onCreate(_: EditorEvents["create"], options: JSTEditorOptions) {
         super.onCreate(_, options);
         this.menuData = options.fontFamily?.values || fontFamilies;
         this.menuData = [

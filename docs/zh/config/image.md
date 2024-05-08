@@ -3,8 +3,8 @@
 ## 示例代码
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     image: {
         allowBase64: true,
         defaultSize: 350,
@@ -70,8 +70,8 @@ new AiEditor({
 Typescript:
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     image: {
         uploadUrl: "https://your-domain/image/upload",
         uploadHeaders: {
@@ -102,8 +102,8 @@ Javascript:
 
 
 ```js
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     image: {
         uploadUrl: "https://your-domain/image/upload",
         uploadHeaders: {

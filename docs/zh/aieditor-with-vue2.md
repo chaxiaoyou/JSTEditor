@@ -1,25 +1,25 @@
-# AiEditor 与 Vue2 整合
+# JSTEditor 与 Vue2 整合
 
 
-在 Vue 中，我们通过 `ref` 属性定义 `div` 的 `$refs` 引用，然后再通过 `new AiEditor` 进行实例化，示例代码如下：
+在 Vue 中，我们通过 `ref` 属性定义 `div` 的 `$refs` 引用，然后再通过 `new JSTEditor` 进行实例化，示例代码如下：
 
 ```html
 <template>
     <div>
-        <h1>AiEditor，一个面向 AI 的富文本编辑器</h1>
+        <h1>JSTEditor，一个面向 AI 的富文本编辑器</h1>
     </div>
     <div ref="divRef" style="height: 600px"/>
 </template>
 
 <script lang="ts">
-    import {AiEditor} from "aieditor";
-    import "aieditor/dist/style.css"
+    import {JSTEditor} from "jsteditor";
+    import "jsteditor/dist/style.css"
     export default {
         mounted(){
-            new AiEditor({
+            new JSTEditor({
                 element: this.$refs.divRef as Element,
                 placeholder: "点击输入内容...",
-                content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+                content: 'JSTEditor 是一个面向 AI 的开源富文本编辑器。 ',
             })
         }
     }

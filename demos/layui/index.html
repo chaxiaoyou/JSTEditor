@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>AiEditor Demo</title>
-    <link type="text/css" rel="stylesheet" href="./aieditor/style.css">
+    <title>JSTEditor Demo</title>
+    <link type="text/css" rel="stylesheet" href="./jsteditor/style.css">
     <script type="module">
-        import {AiEditor} from './aieditor/index.js'
+        import {JSTEditor} from './jsteditor/index.js'
 
-        new AiEditor({
-            element: "#aiEditor",
+        new JSTEditor({
+            element: "#JSTEditor",
             placeholder: "点击输入内容...",
-            content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。<p> <strong>提示：</strong> <br/>1、输入 空格 + "/" 可以快速弹出 AI 菜单 <br/> 2、输入 空格 + "@" 可以提及某人</p> ',
+            content: 'JSTEditor 是一个面向 AI 的下一代富文本编辑器。<p> <strong>提示：</strong> <br/>1、输入 空格 + "/" 可以快速弹出 AI 菜单 <br/> 2、输入 空格 + "@" 可以提及某人</p> ',
             onMentionQuery: (query) => {
                 return [
                     'Michael Yang', 'Jean Zhou', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder'
@@ -39,13 +39,13 @@
             if (!isDark) {
                 document.body.style.background = "#1a1b1e"
                 document.querySelector("#title").style.color = "#eee"
-                document.querySelector("#aiEditor").classList.remove("aie-theme-light");
-                document.querySelector("#aiEditor").classList.add("aie-theme-dark");
+                document.querySelector("#JSTEditor").classList.remove("aie-theme-light");
+                document.querySelector("#JSTEditor").classList.add("aie-theme-dark");
             } else {
                 document.body.style.background = ""
                 document.querySelector("#title").style.color = ""
-                document.querySelector("#aiEditor").classList.remove("aie-theme-dark");
-                document.querySelector("#aiEditor").classList.add("aie-theme-light");
+                document.querySelector("#JSTEditor").classList.remove("aie-theme-dark");
+                document.querySelector("#JSTEditor").classList.add("aie-theme-light");
             }
             isDark = !isDark;
         }
@@ -63,10 +63,10 @@
 
 
 <div style="padding: 10px 20px;font-size: 30px" id="title">
-    AiEditor，一个面向 AI 的下一代富文本编辑器 (<a href="https://gitee.com/aieditor-team/aieditor" target="_blank">获取源码</a>)。<button onclick="dark()">切换主题</button>
+    JSTEditor，一个面向 AI 的下一代富文本编辑器 (<a href="https://gitee.com/jsteditor-team/jsteditor" target="_blank">获取源码</a>)。<button onclick="dark()">切换主题</button>
 </div>
 
-<div id="aiEditor" style="height: 550px;  margin: 20px"></div>
+<div id="JSTEditor" style="height: 550px;  margin: 20px"></div>
 
 </body>
 </html>

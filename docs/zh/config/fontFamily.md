@@ -3,8 +3,8 @@
 ## 示例代码
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     fontFamily:{
         values:[
             {name: "宋体", value: "SimSun"},

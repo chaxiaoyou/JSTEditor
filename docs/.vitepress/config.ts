@@ -3,18 +3,18 @@ import {defineConfig} from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     lang: 'zh-CN',
-    title: "AiEditor 富文本编辑器",
+    title: "JSTEditor 富文本编辑器",
     description: "一个面向 AI 的下一代富文本编辑器，开源富文本编辑器，现代富文本编辑器",
-    titleTemplate: ':title - AiEditor 富文本编辑器',
+    titleTemplate: ':title - JSTEditor 富文本编辑器',
     lastUpdated: true,
     sitemap: {
-        hostname: "https://aieditor.dev"
+        hostname: "https://jsteditor.dev"
     },
 
     themeConfig: {
         logo: '/assets/image/logo.png',
         editLink: {
-            pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path',
+            pattern: 'https://gitee.com/jsteditor-team/jsteditor/edit/main/docs/:path',
             text: '编辑当前页面'
         },
         search: {
@@ -28,17 +28,17 @@ export default defineConfig({
             {text: '开发文档', link: 'zh/what-is-ai-editor'},
             {
                 text: '在线 Demo', items: [
-                    {text: '经典/传统风格', link: 'http://aieditor.jpress.cn'},
-                    {text: '类腾讯文档风格', link: 'http://aieditor1.jpress.cn'},
+                    {text: '经典/传统风格', link: 'http://jsteditor.jpress.cn'},
+                    {text: '类腾讯文档风格', link: 'http://jsteditor1.jpress.cn'},
                 ]
             },
-            {text: 'AiEditor Pro', link: 'zh/pro'},
+            {text: 'JSTEditor Pro', link: 'zh/pro'},
 
             {
                 text: '获取源码', items: [
-                    {text: 'Gitee', link: 'https://gitee.com/aieditor-team/aieditor'},
-                    {text: 'Github', link: 'https://github.com/aieditor-team/aieditor'},
-                    {text: '示例代码', link: 'https://gitee.com/aieditor-team/aieditor/tree/main/demos'},
+                    {text: 'Gitee', link: 'https://gitee.com/jsteditor-team/jsteditor'},
+                    {text: 'Github', link: 'https://github.com/jsteditor-team/jsteditor'},
+                    {text: '示例代码', link: 'https://gitee.com/jsteditor-team/jsteditor/tree/main/demos'},
                     {text: 'ChangeLog', link: 'zh/changes'},
                 ]
             },
@@ -49,12 +49,12 @@ export default defineConfig({
             {
                 text: '简介',
                 items: [
-                    {text: 'AiEditor 是什么', link: '/zh/what-is-ai-editor'},
+                    {text: 'JSTEditor 是什么', link: '/zh/what-is-ai-editor'},
                     {text: '快速开始', link: '/zh/getting-started'},
-                    {text: '与 React 整合', link: '/zh/aieditor-with-react'},
-                    {text: '与 Vue3 整合', link: '/zh/aieditor-with-vue3'},
-                    {text: '与 Vue2 整合', link: '/zh/aieditor-with-vue2'},
-                    {text: '与 Layui 整合', link: '/zh/aieditor-with-layui'},
+                    {text: '与 React 整合', link: '/zh/jsteditor-with-react'},
+                    {text: '与 Vue3 整合', link: '/zh/jsteditor-with-vue3'},
+                    {text: '与 Vue2 整合', link: '/zh/jsteditor-with-vue2'},
+                    {text: '与 Layui 整合', link: '/zh/jsteditor-with-layui'},
                 ]
             },
             {
@@ -87,14 +87,14 @@ export default defineConfig({
             {
                 text: 'API',
                 items: [
-                    {text: 'AiEditor', link: '/zh/api/aieditor'},
+                    {text: 'JSTEditor', link: '/zh/api/jsteditor'},
                 ]
             },
         ],
 
         footer: {
             message: 'Released under the LGPL-v2.1 License.',
-            copyright: 'Copyright © 2023-present AiEditor. ',
+            copyright: 'Copyright © 2023-present JSTEditor. ',
         },
     },
 

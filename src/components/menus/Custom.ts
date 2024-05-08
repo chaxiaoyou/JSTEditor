@@ -1,5 +1,5 @@
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
-import {CustomMenu, InnerEditor} from "../../core/AiEditor.ts";
+import {CustomMenu, InnerEditor} from "../../core/JSTEditor.ts";
 
 export class Custom extends AbstractMenuButton {
 
@@ -20,7 +20,7 @@ export class Custom extends AbstractMenuButton {
 
         this.addEventListener("click", (e) => {
             if (this.config && this.config.onClick) {
-                this.config.onClick(e, (this.editor as InnerEditor).aiEditor);
+                this.config.onClick(e, (this.editor as InnerEditor).JSTEditor);
             }
         })
     }

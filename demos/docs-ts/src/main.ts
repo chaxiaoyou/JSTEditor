@@ -1,11 +1,11 @@
-import {AiEditor} from "../../../src";
+import {JSTEditor} from "../../../src";
 import {config} from "./xinghuo.ts"
 
 const content = `
-{"type":"doc","content":[{"type":"heading","attrs":{"level":2},"content":[{"type":"text","text":"AiEditor 是一个面向 AI 的下一代富文本编辑器。"}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","marks":[{"type":"bold"}],"text":"提示："},{"type":"text","text":" "}]},{"type":"orderedList","attrs":{"tight":true,"start":1},"content":[{"type":"listItem","attrs":{"indent":0},"content":[{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"输入 空格 + \\"/\\" 可以快速弹出 AI 菜单 "}]}]},{"type":"listItem","attrs":{"indent":0},"content":[{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"输入 空格 + \\"@\\" 可以提及某人"}]}]}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0}},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"请使用 Java 帮我写一个 hello world，只需要返回 java 代码内容"}]},{"type":"codeBlock","attrs":{"language":"java"},"content":[{"type":"text","text":"public class HelloWorld {\\n    public static void main(String[] args) {\\n        System.out.println(\\"Hello, World!\\");\\n    }\\n}"}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0}}]}
+{"type":"doc","content":[{"type":"heading","attrs":{"level":2},"content":[{"type":"text","text":"JSTEditor 是一个面向 AI 的下一代富文本编辑器。"}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","marks":[{"type":"bold"}],"text":"提示："},{"type":"text","text":" "}]},{"type":"orderedList","attrs":{"tight":true,"start":1},"content":[{"type":"listItem","attrs":{"indent":0},"content":[{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"输入 空格 + \\"/\\" 可以快速弹出 AI 菜单 "}]}]},{"type":"listItem","attrs":{"indent":0},"content":[{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"输入 空格 + \\"@\\" 可以提及某人"}]}]}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0}},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"请使用 Java 帮我写一个 hello world，只需要返回 java 代码内容"}]},{"type":"codeBlock","attrs":{"language":"java"},"content":[{"type":"text","text":"public class HelloWorld {\\n    public static void main(String[] args) {\\n        System.out.println(\\"Hello, World!\\");\\n    }\\n}"}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0}}]}
 `
 
-function updateOutLine(editor:AiEditor){
+function updateOutLine(editor:JSTEditor){
 
     const outlineContainer = document.querySelector("#outline");
     while (outlineContainer?.firstChild){
@@ -31,8 +31,8 @@ function updateOutLine(editor:AiEditor){
 }
 
 // @ts-ignore
-window.aiEditor = new AiEditor({
-    element: "#aiEditor",
+window.JSTEditor = new JSTEditor({
+    element: "#JSTEditor",
     placeholder: "点击输入内容...",
     contentRetention: true,
     content: JSON.parse(content),

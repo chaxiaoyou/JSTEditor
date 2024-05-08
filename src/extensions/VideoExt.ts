@@ -5,7 +5,7 @@ import {uuid} from "../util/uuid.ts";
 import {DecorationSet} from "prosemirror-view";
 import {createMediaDecoration} from "../util/decorations.ts";
 import {getUploader} from "../util/getUploader.ts";
-import {UploaderEvent} from "../core/AiEditor.ts";
+import {UploaderEvent} from "../core/JSTEditor.ts";
 
 export interface VideoOptions {
     HTMLAttributes: Record<string, any>,

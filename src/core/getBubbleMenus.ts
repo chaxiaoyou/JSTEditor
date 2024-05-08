@@ -1,5 +1,5 @@
 import {Extension, Extensions, getTextBetween, posToDOMRect} from "@tiptap/core";
-import {AiEditor} from "./AiEditor.ts";
+import {JSTEditor} from "./JSTEditor.ts";
 import {BubbleMenuOptions, BubbleMenuPlugin} from "@tiptap/extension-bubble-menu";
 
 
@@ -46,14 +46,14 @@ function createBubbleMenu(name: string, options: BubbleMenuOptions) {
 }
 
 
-const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
+const createTextSelectionBubbleMenu = (JSTEditor: JSTEditor) => {
     const menuEl = document.createElement("aie-bubble-text") as TextSelectionBubbleMenu;
-    aiEditor.eventComponents.push(menuEl);
+    JSTEditor.eventComponents.push(menuEl);
     return createBubbleMenu("textSelectionBubble", {
         pluginKey: 'textSelectionBubble',
         element: menuEl,
         tippyOptions: {
-            appendTo: aiEditor.container,
+            appendTo: JSTEditor.container,
             placement: 'top',
             arrow: false,
             onCreate(instance: Instance) {
@@ -78,14 +78,14 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
 }
 
 
-const createLinkBubbleMenu = (aiEditor: AiEditor) => {
+const createLinkBubbleMenu = (JSTEditor: JSTEditor) => {
     const menuEl = document.createElement("aie-bubble-link") as AbstractBubbleMenu;
-    aiEditor.eventComponents.push(menuEl);
+    JSTEditor.eventComponents.push(menuEl);
     return createBubbleMenu("linkBubble", {
         pluginKey: 'textSelectionBubble',
         element: menuEl,
         tippyOptions: {
-            appendTo: aiEditor.container,
+            appendTo: JSTEditor.container,
             placement: 'bottom',
             arrow: false,
         },
@@ -99,21 +99,21 @@ const createLinkBubbleMenu = (aiEditor: AiEditor) => {
 }
 
 
-const createImageBubbleMenu = (aiEditor: AiEditor) => {
+const createImageBubbleMenu = (JSTEditor: JSTEditor) => {
     const menuEl = document.createElement("aie-bubble-image") as AbstractBubbleMenu;
-    aiEditor.eventComponents.push(menuEl);
+    JSTEditor.eventComponents.push(menuEl);
     return createBubbleMenu("imageBubble", {
         pluginKey: 'imageBubble',
         element: menuEl,
         tippyOptions: {
-            appendTo: aiEditor.container,
+            appendTo: JSTEditor.container,
             placement: 'top-start',
             arrow: false,
             getReferenceClientRect: (() => {
-                const {ranges} = aiEditor.innerEditor.state.selection
+                const {ranges} = JSTEditor.innerEditor.state.selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = aiEditor.innerEditor.view;
+                const view = JSTEditor.innerEditor.view;
 
                 let node = view.nodeDOM(from) as HTMLElement
                 const imageEl = node.querySelector("img") as HTMLImageElement;
@@ -136,26 +136,26 @@ const createImageBubbleMenu = (aiEditor: AiEditor) => {
 }
 
 
-const createTableBubbleMenu = (aiEditor: AiEditor) => {
+const createTableBubbleMenu = (JSTEditor: JSTEditor) => {
     const menuEl = document.createElement("aie-bubble-table") as AbstractBubbleMenu;
-    aiEditor.eventComponents.push(menuEl);
+    JSTEditor.eventComponents.push(menuEl);
     return createBubbleMenu("tableBubble", {
         pluginKey: 'tableBubble',
         element: menuEl,
         tippyOptions: {
             placement: 'top',
-            appendTo: aiEditor.container,
+            appendTo: JSTEditor.container,
             arrow: false,
             getReferenceClientRect: (() => {
-                const selection = aiEditor.innerEditor.state.selection;
+                const selection = JSTEditor.innerEditor.state.selection;
                 const {ranges} = selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = aiEditor.innerEditor.view;
+                const view = JSTEditor.innerEditor.view;
 
                 const domRect = posToDOMRect(view, from, to);
-                const tablePos = aiEditor.innerEditor.state.selection.$from.posAtIndex(0, 1);
-                const coordsAtPos = aiEditor.innerEditor.view.coordsAtPos(tablePos);
+                const tablePos = JSTEditor.innerEditor.state.selection.$from.posAtIndex(0, 1);
+                const coordsAtPos = JSTEditor.innerEditor.view.coordsAtPos(tablePos);
 
                 return {
                     ...domRect,
@@ -171,11 +171,11 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
 }
 
 
-export const getBubbleMenus = (aiEditor: AiEditor): Extensions => {
+export const getBubbleMenus = (JSTEditor: JSTEditor): Extensions => {
     const bubbleMenus: Extensions = [];
-    bubbleMenus.push(createTextSelectionBubbleMenu(aiEditor))
-    bubbleMenus.push(createLinkBubbleMenu(aiEditor))
-    bubbleMenus.push(createImageBubbleMenu(aiEditor))
-    bubbleMenus.push(createTableBubbleMenu(aiEditor))
+    bubbleMenus.push(createTextSelectionBubbleMenu(JSTEditor))
+    bubbleMenus.push(createLinkBubbleMenu(JSTEditor))
+    bubbleMenus.push(createImageBubbleMenu(JSTEditor))
+    bubbleMenus.push(createTableBubbleMenu(JSTEditor))
     return bubbleMenus;
 }

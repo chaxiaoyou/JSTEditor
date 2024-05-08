@@ -8,7 +8,7 @@ export default defineConfig({
         minify: "esbuild",
         lib: {
             entry: resolve(__dirname, './src/index.ts'),
-            name: 'aieditor',
+            name: 'jsteditor',
             // fileName: (format) => `index.${format}.js`,
             fileName: `index`,
             formats: ['es', 'cjs']
@@ -19,4 +19,13 @@ export default defineConfig({
         //     targets: ['defaults', 'not IE 11','chrome 52'],
         // }),
     ],
+    server: {
+        proxy: {
+          '/api/oa-ai/api': {
+            target: 'http://dev.jushitui.com',
+            changeOrigin: true,
+            secure: false,
+          },
+        },
+      },
 })

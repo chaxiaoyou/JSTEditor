@@ -3,8 +3,8 @@
 ## 示例代码
 
 ```typescript
-new AiEditor({
-    element: "#aiEditor",
+new JSTEditor({
+    element: "#JSTEditor",
     video: {
         customMenuInvoke: (editor: Editor) => {
         },

@@ -1,5 +1,5 @@
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
-import {InnerEditor} from "../../core/AiEditor.ts";
+import {InnerEditor} from "../../core/JSTEditor.ts";
 
 export class Video extends AbstractMenuButton {
 
@@ -40,7 +40,7 @@ export class Video extends AbstractMenuButton {
     // @ts-ignore
     onClick(commands) {
         if (this.options?.video?.customMenuInvoke) {
-            this.options.video.customMenuInvoke((this.editor as InnerEditor).aiEditor);
+            this.options.video.customMenuInvoke((this.editor as InnerEditor).JSTEditor);
         } else {
             this.fileInput?.click();
         }
