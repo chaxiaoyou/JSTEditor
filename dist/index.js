@@ -17634,14 +17634,13 @@ class WE {
     this.fetch && (this.ctrl.abort(), this.isStop || (this.listener.onStop(), this.isStop = !0));
   }
   async send(e) {
-    if (console.log(e), this.isOpen)
+    if (this.isOpen)
       try {
         ZE({
           url: this.config.url,
           data: JSON.parse(e),
           headers: this.config.headers,
           onMessage: (n) => {
-            console.info("onMessage:", n);
             let r = n.text ?? "";
             this.onMessage(r);
           },
@@ -17678,19 +17677,28 @@ class KE extends xc {
   createAiClient(e, n) {
     var s;
     const r = this.aiModelConfig, i = {
-      onStart: n.onStart,
-      onStop: n.onStop,
+      onStart: (o) => {
+        const a = this.aiModelConfig;
+        a.onStart && a.onStart(), n.onStart(o);
+      },
+      onStop: () => {
+        const o = this.aiModelConfig;
+        o.onStop && o.onStop(), n.onStop();
+      },
       onMessage: (o) => {
         var u;
         const a = this.aiModelConfig, l = (u = a.messageParser) == null ? void 0 : u.call(a, o);
         l && n.onMessage(l);
       }
     };
-    return r.protocol === "sse" ? new WE({
-      url: e,
-      method: "post",
-      headers: (s = r.headers) == null ? void 0 : s.call(r)
-    }, i) : new O1(e, i);
+    return r.protocol === "sse" ? new WE(
+      {
+        url: e,
+        method: "post",
+        headers: (s = r.headers) == null ? void 0 : s.call(r)
+      },
+      i
+    ) : new O1(e, i);
   }
   wrapMessage(e) {
     var r;
@@ -38537,10 +38545,13 @@ class ES extends Oa {
         return Ea(r, s, o);
       },
       onShow: (n) => {
-        window.setTimeout(() => {
-          var r;
-          return (r = n.popper.querySelector("#prompt")) == null ? void 0 : r.focus();
-        }, 0);
+        window.setTimeout(
+          () => {
+            var r;
+            return (r = n.popper.querySelector("#prompt")) == null ? void 0 : r.focus();
+          },
+          0
+        );
       }
     }));
   }
@@ -38581,7 +38592,7 @@ class ES extends Oa {
     const n = document.createElement("div");
     return n.classList.add("aie-ai-panel"), n.innerHTML = `
         <div class="aie-ai-panel-body">
-            <div class="aie-ai-panel-body-content" style="display: none"><div class="loader">${Xs.refresh}</div><textarea readonly></textarea></div>
+            <div class="aie-ai-panel-body-content" style="display: none"><div class="loader">${Xs.refresh}</div><textarea id="textarea" readonly></textarea></div>
             <div class="aie-ai-panel-body-input"><input id="prompt" placeholder="告诉 AI 下一步应该如何？比如：帮我翻译成英语" type="text" />
             <button type="button" id="go" style="width: 30px;height: 30px">${Xs.aiPanelStart}</button></div>
             <div class="aie-ai-panel-body-tips"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 17C9 17 16 18 19 21H20C20.5523 21 21 20.5523 21 20V13.937C21.8626 13.715 22.5 12.9319 22.5 12C22.5 11.0681 21.8626 10.285 21 10.063V4C21 3.44772 20.5523 3 20 3H19C16 6 9 7 9 7H5C3.89543 7 3 7.89543 3 9V15C3 16.1046 3.89543 17 5 17H6L7 22H9V17ZM11 8.6612C11.6833 8.5146 12.5275 8.31193 13.4393 8.04373C15.1175 7.55014 17.25 6.77262 19 5.57458V18.4254C17.25 17.2274 15.1175 16.4499 13.4393 15.9563C12.5275 15.6881 11.6833 15.4854 11 15.3388V8.6612ZM5 9H9V15H5V9Z" fill="currentColor"></path></svg>
@@ -38628,14 +38639,21 @@ class ES extends Oa {
       var i, s;
       const r = n.querySelector("textarea");
       if (r.value) {
-        const { state: { selection: o, tr: a }, view: { dispatch: l }, schema: u } = this.editor, c = u.text(r.value);
+        const {
+          state: { selection: o, tr: a },
+          view: { dispatch: l },
+          schema: u
+        } = this.editor, c = u.text(r.value);
         l(a.replaceRangeWith(o.from, o.to, c)), (i = this.aiBubbleInstance) == null || i.hide(), (s = this._instance) == null || s.show();
       }
     }), n.querySelector("#insert").addEventListener("click", () => {
       var i, s;
       const r = n.querySelector("textarea");
       if (r.value) {
-        const { state: { selection: o, tr: a }, view: { dispatch: l } } = this.editor;
+        const {
+          state: { selection: o, tr: a },
+          view: { dispatch: l }
+        } = this.editor;
         l(a.insertText(r.value, o.to)), (i = this.aiBubbleInstance) == null || i.hide(), (s = this._instance) == null || s.show();
       }
     }), n.querySelector("#hide").addEventListener("click", () => {
@@ -38659,17 +38677,21 @@ class ES extends Oa {
       const s = n.querySelector("textarea");
       s.value = "";
       const { selection: o, doc: a } = this.editor.state, l = a.textBetween(o.from, o.to), u = this.editor.userOptions, c = Er.get((i = u.ai) == null ? void 0 : i.bubblePanelModel);
-      if (console.log(c), c) {
+      if (c) {
         const d = this;
         c.chat(l, r, {
           onStart(f) {
-            d.aiClient = f, n.querySelector(".actions").style.display = "none", n.querySelector(".loader").style.display = "block", n.querySelector(".aie-ai-panel-body-content").style.display = "block", n.querySelector("#go").innerHTML = Xs.aiPanelStop;
+            d.aiClient = f, n.querySelector(".actions").style.display = "none", n.querySelector(".loader").style.display = "block", n.querySelector(
+              ".aie-ai-panel-body-content"
+            ).style.display = "block", n.querySelector("#go").innerHTML = Xs.aiPanelStop;
           },
           onStop() {
-            d.aiClient = null, n.querySelector("#go").innerHTML = Xs.aiPanelStart, n.querySelector(".aie-ai-panel-footer").style.display = "block", n.querySelector(".loader").style.display = "none", n.querySelector(".actions").style.display = "none";
+            d.aiClient = null, n.querySelector("#go").innerHTML = Xs.aiPanelStart, n.querySelector(
+              ".aie-ai-panel-footer"
+            ).style.display = "block", n.querySelector(".loader").style.display = "none", n.querySelector(".actions").style.display = "none";
           },
           onMessage(f) {
-            s.value = (s == null ? void 0 : s.value) + f.content;
+            s.value = (s == null ? void 0 : s.value) + f.content, s.style.height = "auto", s.style.height = s.scrollHeight + "px";
           }
         });
       } else
@@ -39212,8 +39234,8 @@ const OS = new De("mention"), NS = he.create({
           let t, e, n = 0, r;
           const i = () => {
             t.innerHTML = `
-                            <div class="ai-command-container">
-                                <div class="ai-command-container-header">
+                            <div class="ai-command-container hljs">
+                                <div class="ai-command-container-header hljs">
                                     <div class="ai-command-container-header-item item ${n === 0 ? "active" : ""}" data-index="0">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 6V21H11V6H5V4H19V6H13Z" fill="currentColor"></path></svg>        
                                     </div>
@@ -39252,7 +39274,7 @@ const OS = new De("mention"), NS = he.create({
                                     </div>
                                 </div>
                                 <hr/>
-                                ${r.items.map((s, o) => `<div class="ai-command-container-item item ${n === 12 + o ? "active" : ""}" data-index="${12 + o}">${s.icon} ${s.name}</div>`).join("")}
+                                ${r.items.map((s, o) => `<div class="ai-command-container-item hljs item ${n === 12 + o ? "active" : ""}" data-index="${12 + o}">${s.icon} ${s.name}</div>`).join("")}
                             </div>
                             `, t.addEventListener("click", (s) => {
               const o = s.target.closest(".item");

@@ -41,7 +41,6 @@ export class SseClient implements AiClient {
   }
 
   async send(message: any) {
-    console.log(message);
     if (this.isOpen) {
       try {
         streamFetch({
@@ -49,13 +48,8 @@ export class SseClient implements AiClient {
           data: JSON.parse(message),
           headers: this.config.headers,
           onMessage: (e) => {
-            console.info("onMessage:", e);
             let resp_text: string = e.text ?? "";
             this.onMessage(resp_text);
-            // setResult((prevOutput) => {
-            //   let resp_text: string = e.text ?? "";
-            //   return prevOutput + resp_text;
-            // });
           },
           abortCtrl: this.ctrl,
         })

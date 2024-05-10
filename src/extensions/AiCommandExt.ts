@@ -112,8 +112,8 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                     let suggestionProps: SuggestionProps;
                     const updateElement = () => {
                         element.innerHTML = `
-                            <div class="ai-command-container">
-                                <div class="ai-command-container-header">
+                            <div class="ai-command-container hljs">
+                                <div class="ai-command-container-header hljs">
                                     <div class="ai-command-container-header-item item ${selectIndex === 0 ? 'active' : ''}" data-index="0">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 6V21H11V6H5V4H19V6H13Z" fill="currentColor"></path></svg>        
                                     </div>
@@ -153,7 +153,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                                 </div>
                                 <hr/>
                                 ${suggestionProps.items.map((item, index) => {
-                            return `<div class="ai-command-container-item item ${selectIndex === 12 + index ? 'active' : ''}" data-index="${12 + index}">${item.icon} ${item.name}</div>`
+                            return `<div class="ai-command-container-item hljs item ${selectIndex === 12 + index ? 'active' : ''}" data-index="${12 + index}">${item.icon} ${item.name}</div>`
                         }).join('')}
                             </div>
                             `
