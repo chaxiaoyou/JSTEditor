@@ -21,7 +21,7 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                     element.innerHTML = `
                             <div class="items">
                              ${suggestionProps.items.map((item: any, index) => {
-                                return `<button type="button" class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}"> @${item.name ? item.name : item}</button>`
+                                return `<button type="button" class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}"> <img src="${item.image}" />${item.name ? item.name : item}</button>`
                             }).join("")}
                             </div>
                             `
@@ -31,7 +31,7 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                             const selectIndex = Number(closest.getAttribute("data-index"));
                             const item = suggestionProps.items[selectIndex];
                             if (item && item.id) {
-                                suggestionProps.command(item)
+                                suggestionProps.command({id: item.name})
                             } else {
                                 suggestionProps.command({id: item})
                             }
