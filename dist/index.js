@@ -39103,13 +39103,13 @@ const OS = new De("mention"), NS = he.create({
       const s = () => {
         e.innerHTML = `
                             <div class="items">
-                             ${i.items.map((o, a) => `<button type="button" class="item ${a === r ? "item-selected" : ""}" data-index="${a}"> @${o.name ? o.name : o}</button>`).join("")}
+                             ${i.items.map((o, a) => `<button type="button" class="item ${a === r ? "item-selected" : ""}" data-index="${a}"> <img src="${o.image}" />${o.name ? o.name : o}</button>`).join("")}
                             </div>
                             `, e.addEventListener("click", (o) => {
           const a = o.target.closest(".item");
           if (a) {
             const l = Number(a.getAttribute("data-index")), u = i.items[l];
-            u && u.id ? i.command(u) : i.command({ id: u });
+            u && u.id ? i.command({ id: u.name }) : i.command({ id: u });
           }
         });
       };
