@@ -194,6 +194,7 @@ export declare type JSTEditorOptions = {
     cbName?: string;
     cbUrl?: string;
     onMentionQuery?: (query: string) => any[] | Promise<any[]>;
+    onSelectMention?: (items: any[]) => void;
     onCreateBefore?: (editor: JSTEditor, extensions: Extensions) => void | Extensions;
     onDestroy?: (editor: JSTEditor) => void;
     onCreated?: (editor: JSTEditor) => void;

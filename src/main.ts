@@ -59,11 +59,20 @@ window.JSTEditor = new JSTEditor({
         }
 
     },
+    onChange: (aiEditor) => {
+        // 监听到用编辑器内容发生变化了，控制台打印编辑器的 html 内容...
+        const text = aiEditor.getJson();
+        // const xx = aiEditor.getOptions();
+        console.log(text)
+      },
     i18n: {
         zh: {
             "undo": "撤销(可自定义国际化内容...)",
             "redo": "重做(可自定义国际化内容!)",
         }
+    },
+    onSelectMention: (item) => {
+        console.log(item);
     },
     onMentionQuery: (query) => {
        return [

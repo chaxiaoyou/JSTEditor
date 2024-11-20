@@ -170,7 +170,7 @@ export const getExtensions = (editor: JSTEditor, options: JSTEditorOptions): Ext
     // }
 
     if (options.onMentionQuery) {
-        ret.push(createMention(options.onMentionQuery))
+        ret.push(createMention(options.onMentionQuery, options.onSelectMention))
     }
 
     return ret;

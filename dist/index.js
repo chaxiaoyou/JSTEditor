@@ -39092,33 +39092,33 @@ const OS = new De("mention"), NS = he.create({
       })
     ];
   }
-}), LS = (t) => NS.configure({
+}), LS = (t, e) => NS.configure({
   HTMLAttributes: {
     class: "mention"
   },
   suggestion: {
-    items: ({ query: e }) => t(e),
+    items: ({ query: n }) => t(n),
     render: () => {
-      let e, n, r = 0, i;
-      const s = () => {
-        e.innerHTML = `
+      let n, r, i = 0, s;
+      const o = () => {
+        n.innerHTML = `
                             <div class="items">
-                             ${i.items.map((o, a) => `<button type="button" class="item ${a === r ? "item-selected" : ""}" data-index="${a}"> <img src="${o.image}" />${o.name ? o.name : o}</button>`).join("")}
+                             ${s.items.map((a, l) => `<button type="button" class="item ${l === i ? "item-selected" : ""}" data-index="${l}"> <img src="${a.image}" />${a.name ? a.name : a}</button>`).join("")}
                             </div>
-                            `, e.addEventListener("click", (o) => {
-          const a = o.target.closest(".item");
-          if (a) {
-            const l = Number(a.getAttribute("data-index")), u = i.items[l];
-            u && u.id ? i.command({ id: u.name }) : i.command({ id: u });
+                            `, n.addEventListener("click", (a) => {
+          const l = a.target.closest(".item");
+          if (l) {
+            const u = Number(l.getAttribute("data-index")), c = s.items[u];
+            c && c.id ? (e && e(c), s.command({ id: c.id, label: c.name })) : s.command({ id: c });
           }
         });
       };
       return {
-        onStart: (o) => {
-          e = document.createElement("div"), e.classList.add("suggestion"), i = o, o.clientRect && (s(), n = Xe("body", {
-            getReferenceClientRect: o.clientRect,
-            appendTo: () => o.editor.view.dom.closest(".aie-container"),
-            content: e,
+        onStart: (a) => {
+          n = document.createElement("div"), n.classList.add("suggestion"), s = a, a.clientRect && (o(), r = Xe("body", {
+            getReferenceClientRect: a.clientRect,
+            appendTo: () => a.editor.view.dom.closest(".aie-container"),
+            content: n,
             showOnCreate: !0,
             interactive: !0,
             allowHTML: !0,
@@ -39127,26 +39127,26 @@ const OS = new De("mention"), NS = he.create({
             arrow: !1
           }));
         },
-        onUpdate(o) {
-          i = o, o.clientRect && (s(), n[0].setProps({
-            getReferenceClientRect: o.clientRect
+        onUpdate(a) {
+          s = a, a.clientRect && (o(), r[0].setProps({
+            getReferenceClientRect: a.clientRect
           }));
         },
-        onKeyDown(o) {
-          if (o.event.key === "Escape")
-            return n[0].hide(), !0;
-          if (o.event.key === "ArrowUp")
-            return r = (r + i.items.length - 1) % i.items.length, s(), !0;
-          if (o.event.key === "ArrowDown")
-            return r = (r + 1) % i.items.length, s(), !0;
-          if (o.event.key === "Enter") {
-            const a = i.items[r];
-            return a && a.id ? i.command(a) : i.command({ id: a }), !0;
+        onKeyDown(a) {
+          if (a.event.key === "Escape")
+            return r[0].hide(), !0;
+          if (a.event.key === "ArrowUp")
+            return i = (i + s.items.length - 1) % s.items.length, o(), !0;
+          if (a.event.key === "ArrowDown")
+            return i = (i + 1) % s.items.length, o(), !0;
+          if (a.event.key === "Enter") {
+            const l = s.items[i];
+            return l && l.id ? (e && e(l), s.command({ id: l.id, label: l.name })) : s.command({ id: l }), !0;
           }
           return !1;
         },
         onExit() {
-          n[0].destroy(), e.remove();
+          r[0].destroy(), n.remove();
         }
       };
     }
@@ -46864,7 +46864,7 @@ const oD = /* @__PURE__ */ bi(sD), aD = /^:::([a-z]+)?[\s\n]$/, lD = he.create({
         return ((D = e.ai) == null ? void 0 : D.commands) || RS;
       }
     }
-  })), e.onMentionQuery && n.push(LS(e.onMentionQuery)), n;
+  })), e.onMentionQuery && n.push(LS(e.onMentionQuery, e.onSelectMention)), n;
 };
 const fD = {
   ////commons

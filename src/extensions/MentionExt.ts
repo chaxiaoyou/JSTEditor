@@ -2,7 +2,7 @@ import {Mention} from "@tiptap/extension-mention";
 import tippy, {Instance} from "tippy.js";
 import {SuggestionProps} from "@tiptap/suggestion";
 
-export const createMention = (onMentionLoad: (query: string) => any[] | Promise<any[]>) => {
+export const createMention = (onMentionLoad: (query: string) => any[] | Promise<any[]>, onSelectMention?: (items: any[]) => void) => {
     return Mention.configure({
         HTMLAttributes: {
             class: 'mention',
@@ -30,8 +30,10 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                         if (closest) {
                             const selectIndex = Number(closest.getAttribute("data-index"));
                             const item = suggestionProps.items[selectIndex];
+                           
                             if (item && item.id) {
-                                suggestionProps.command({id: item.name})
+                                onSelectMention && onSelectMention(item);
+                                suggestionProps.command({id: item.id, label: item.name})
                             } else {
                                 suggestionProps.command({id: item})
                             }
@@ -96,7 +98,8 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                         } else if (props.event.key === "Enter") {
                             const item = suggestionProps.items[selectIndex];
                             if (item && item.id) {
-                                suggestionProps.command(item)
+                                onSelectMention && onSelectMention(item);
+                                suggestionProps.command({id: item.id, label: item.name})
                             } else {
                                 suggestionProps.command({id: item})
                             }
